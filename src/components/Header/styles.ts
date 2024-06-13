@@ -6,7 +6,7 @@ export const HeaderBar = styled.header`
   background-image: url(${vetor});
   background-size: cover;
   background-position: center;
-  height: 384px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;

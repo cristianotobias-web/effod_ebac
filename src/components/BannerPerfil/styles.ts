@@ -12,14 +12,14 @@ export const Image = styled.div`
 
   .container {
     position: relative;
-    padding-top: 200px;
+    padding-top: 210px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
   ${TagContainer} {
     position: absolute;
-    top: 25px;
+    top: 10px;
     left: -20px;
   }
   /* Camada preta */

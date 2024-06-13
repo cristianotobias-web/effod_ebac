@@ -19,6 +19,7 @@ export const ContainerFooter = styled.footer`
       margin: 0 auto;
       font-size: 10px;
       text-align: center;
+      color: ${cores.pink};
     }
     div {
       width: 800px;

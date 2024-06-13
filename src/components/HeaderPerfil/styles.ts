@@ -23,9 +23,11 @@ export const Logo = styled.img`
 `
 export const TitleHeaderPerfil = styled(Link)`
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 900;
-  color: ${cores.pink};
+  h2 {
+    font-size: 18px;
+    font-weight: 900;
+    color: ${cores.pink};
+  }
 `
 export const CartHeaderPerfil = styled.div`
   font-size: 18px;

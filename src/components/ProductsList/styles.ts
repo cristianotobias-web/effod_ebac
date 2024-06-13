@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ProductsListContainer = styled.section`
-  margin-top: 54px;
+  padding-top: 80px;
   margin-bottom: 120px;
 `
 
