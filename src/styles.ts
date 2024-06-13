@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const cores = {
-  white: '#eeeeee',
+  white: '#ffffff',
   pink: '#E66767',
   transparent: 'transparent',
   pinkLight: '#FFEBD9'
@@ -12,7 +12,7 @@ const GlobalCss = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: "Roboto", sans-serif;
     list-style: none;
  }
 

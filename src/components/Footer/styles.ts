@@ -7,33 +7,41 @@ export const ContainerFooter = styled.footer`
   background-size: cover;
   background-position: center;
   background-color: ${cores.pink};
-  padding: 32px 0;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  text-align: center;
-  div {
-    width: 800px;
-    @media (max-width: 768px) {
-      width: 400px;
+  .container {
+    padding: 40px 0;
+    height: 298px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      width: 480px;
+      margin: 0 auto;
+      font-size: 10px;
+      text-align: center;
+    }
+    div {
+      width: 800px;
+      @media (max-width: 768px) {
+        width: 400px;
+      }
     }
   }
 `
 export const Logo = styled.img`
-  width: 100px;
+  width: 125px;
   height: auto;
+  margin-bottom: 32px;
 `
 export const SectionFooter = styled.div`
-  margin-bottom: 64px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `
 
 export const Links = styled.ul`
   display: flex;
-  margin-top: 32px;
 `
 
 export const Link = styled.a`

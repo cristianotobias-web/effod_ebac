@@ -3,7 +3,7 @@ import { cores } from '../../styles'
 import { Props } from '.'
 
 export const TagContainer = styled.div<Props>`
-  color: ${cores.white};
+  color: ${cores.pinkLight};
   margin-left: 5px;
   background-color: ${(props) => {
     if (props.size === 'big') {
@@ -16,18 +16,18 @@ export const TagContainer = styled.div<Props>`
   }};
   font-size: ${(props) => {
     if (props.size === 'big') {
-      return '30px'
+      return '32px'
     } else if (props.size === 'small') {
-      return '14px'
+      return '12px'
     } else if (props.size === 'normal') {
-      return '16px'
+      return '14px'
     }
   }};
   font-weight: ${(props) => {
     if (props.size === 'big') {
-      return 'normal'
+      return '100'
     } else if (props.size === 'small') {
-      return 'bold'
+      return '700'
     } else if (props.size === 'normal') {
       return 'normal'
     }

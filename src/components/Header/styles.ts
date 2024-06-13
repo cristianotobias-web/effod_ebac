@@ -10,18 +10,20 @@ export const HeaderBar = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
 `
 
 export const Logo = styled.img`
-  width: 100px;
+  width: 125px;
   height: auto;
 `
 
 export const HeaderTitle = styled.h1`
-  margin: 0;
-  font-size: 1.2rem;
+  font-size: 36px;
   color: ${cores.pink};
-  font-weight: bold;
+  font-weight: 900;
+  width: 539px;
 `

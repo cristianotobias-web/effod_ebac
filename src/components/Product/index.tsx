@@ -24,7 +24,7 @@ const Product = ({ title, grade, description, image, infos }: Props) => (
     <img src={image} alt={title} />
     <CategoriesContainer>
       {infos.map((info) => (
-        <Tag size="normal" key={info}>
+        <Tag size="small" key={info}>
           {info}
         </Tag>
       ))}
@@ -33,8 +33,8 @@ const Product = ({ title, grade, description, image, infos }: Props) => (
       <TitleContainer>
         <Title>{title}</Title>
         <GradeContainer>
+          <p>{grade}</p>
           <img src={starGrade} alt="Star grade" />
-          {grade}
         </GradeContainer>
       </TitleContainer>
       <Description>{description}</Description>

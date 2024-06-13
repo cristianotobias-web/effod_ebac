@@ -13,11 +13,11 @@ import x_icon from '../../assets/images/x_icon.png'
 
 const Footer = () => (
   <ContainerFooter>
-    <div>
-      <Link to="/">
-        <Logo src={logo} alt="Logo" />
-      </Link>
+    <div className="container">
       <SectionFooter>
+        <Link to="/">
+          <Logo src={logo} alt="Logo" />
+        </Link>
         <Links>
           <li>
             <LinkFooter

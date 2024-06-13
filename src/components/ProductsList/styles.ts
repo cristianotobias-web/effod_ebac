@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
 export const ProductsListContainer = styled.section`
-  padding: 32px 0;
+  margin-top: 54px;
+  margin-bottom: 120px;
 `
 
 export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 60px;
-  row-gap: 30px;
-  margin-top: 40px;
+  column-gap: 75px;
+  row-gap: 54px;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }

@@ -18,15 +18,14 @@ export const CardContent = styled.div`
   padding: 8px;
 `
 export const Title = styled.h3`
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 18px;
   display: block;
-  margin-top: 16px;
-  margin-bottom: 8px;
 `
 export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
+  font-weight: 400;
   display: block;
   margin-top: 16px;
   padding-bottom: 20px;
@@ -46,7 +45,11 @@ export const GradeContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  p {
+    font-size: 18px;
+    font-weight: 700;
+  }
   img {
-    width: 16px;
+    width: 20px;
   }
 `

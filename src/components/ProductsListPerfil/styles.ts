@@ -9,7 +9,8 @@ export const List = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 60px;
   row-gap: 20px;
-  margin-top: 40px;
+  margin-top: 56px;
+  margin-bottom: 120px;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
