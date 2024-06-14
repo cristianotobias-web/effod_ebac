@@ -7,7 +7,7 @@ import {
   Logo
 } from './styles'
 import logo from '../../assets/images/logo.svg'
-import instagram from '../../assets/images/instagram_icon.png'
+import instagram from '../../assets/images/Instagram.svg'
 import facebook from '../../assets/images/facebook_icon.png'
 import x_icon from '../../assets/images/x_icon.png'
 

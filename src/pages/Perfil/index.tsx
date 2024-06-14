@@ -1,112 +1,59 @@
-import pizzaMarguerita from '../../assets/images/pizza_marguerita.png'
-import Food from '../../models/Foods'
+import { useParams } from 'react-router-dom'
+import $ from 'jquery'
+import { Food } from '../../pages/Home'
 import HeaderPerfil from '../../components/HeaderPerfil'
 import BannerPerfil from '../../components/BannerPerfil'
 import ProductListPerfil from '../../components/ProductsListPerfil'
+import { useEffect, useState } from 'react'
 
-const promocoes: Food[] = [
-  {
-    id: 1,
-    title: 'Pizza Marguerita',
-    grade: '5.0',
-    infos: ['R$199,90', '-10%'],
-    image: pizzaMarguerita,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 2,
-    title: 'Pizza Marguerita',
-    grade: '5.0',
-    infos: ['R$199,90', '-10%'],
-    image: pizzaMarguerita,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 3,
-    title: 'Pizza Marguerita',
-    grade: '5.0',
-    infos: ['R$199,90', '-10%'],
-    image: pizzaMarguerita,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 4,
-    title: 'Pizza Marguerita',
-    grade: '5.0',
-    infos: ['R$199,90', '-10%'],
-    image: pizzaMarguerita,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 5,
-    title: 'Pizza Marguerita',
-    grade: '5.0',
-    infos: ['R$199,90', '-10%'],
-    image: pizzaMarguerita,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 6,
-    title: 'Pizza Marguerita',
-    grade: '5.0',
-    infos: ['R$199,90', '-10%'],
-    image: pizzaMarguerita,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
+const Perfil = () => {
+  const { id } = useParams()
+  // Verifica se o id está definido e o converte para número
+  const restaurantId = id ? parseInt(id, 10) : null
+  const [restaurants, setRestaurants] = useState<Food[]>([])
+  const [loading, setLoading] = useState(true)
+  const [cartCount, setCartCount] = useState(0)
+
+  useEffect(() => {
+    const endpoint = 'https://fake-api-tau.vercel.app/api/efood/restaurantes'
+
+    $.ajax({
+      url: endpoint,
+      method: 'GET',
+      success: (res) => {
+        setRestaurants(res)
+        setLoading(false)
+      },
+      error: (err) => {
+        console.error('Erro ao buscar os dados:', err)
+        setLoading(false)
+      }
+    })
+  }, [])
+
+  const addToCart = () => {
+    setCartCount(cartCount + 1)
   }
-]
 
-// const emBreve: Food[] = [
-//   {
-//     id: 5,
-//     title: 'Diablo 4',
-//     grade: '5.0',
-//     infos: ['5/04'],
-//     image: pizzaMarguerita,
-//     description:
-//       'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.'
-//   },
-//   {
-//     id: 6,
-//     title: 'Star Wars Jedi Survivor',
-//     grade: '5.0',
-//     infos: ['5/04'],
-//     image: pizzaMarguerita,
-//     description:
-//       'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...'
-//   },
-//   {
-//     id: 7,
-//     title: 'Street Fighter 6',
-//     grade: '5.0',
-//     infos: ['5/04'],
-//     image: pizzaMarguerita,
-//     description:
-//       'Street Fighter 6 é um próximo jogo de luta desenvolvido e publicado pela Capcom.'
-//   },
-//   {
-//     id: 8,
-//     title: 'The Legend of Zelda - TOK',
-//     grade: 'RPG',
-//     infos: ['5/04'],
-//     image: pizzaMarguerita,
-//     description:
-//       'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...     '
-//   }
-// ]
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
-const Perfil = () => (
-  <>
-    <HeaderPerfil />
-    <BannerPerfil />
-    <ProductListPerfil foods={promocoes} />
-    {/* <ProductList foods={emBreve} /> */}
-  </>
-)
+  const restaurant = restaurants.find(
+    (restaurant) => restaurant.id === restaurantId
+  )
+
+  if (!restaurant) {
+    return <div>Restaurante não encontrado</div>
+  }
+
+  return (
+    <>
+      <HeaderPerfil cartCount={cartCount} />
+      <BannerPerfil restaurant={restaurant} />
+      <ProductListPerfil foods={restaurant.cardapio} addToCart={addToCart} />
+    </>
+  )
+}
 
 export default Perfil

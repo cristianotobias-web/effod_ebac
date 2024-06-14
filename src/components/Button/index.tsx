@@ -4,7 +4,7 @@ type Props = {
   type: 'button' | 'link'
   to?: string
   onClick?: () => void
-  children: string
+  children: React.ReactNode
 }
 
 const Button = ({ type, to, onClick, children }: Props) => {

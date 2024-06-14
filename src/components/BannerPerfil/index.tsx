@@ -1,13 +1,18 @@
+import { Food } from '../../pages/Home'
+
 import { Image, Title } from './styles'
-import bannerImg from '../../assets/images/background_image.png'
 import Tag from '../Tag'
 
-const BannerPerfil = () => (
-  <Image style={{ backgroundImage: `url(${bannerImg})` }}>
+interface BannerPerfilProps {
+  restaurant: Food
+}
+
+const BannerPerfil: React.FC<BannerPerfilProps> = ({ restaurant }) => (
+  <Image style={{ backgroundImage: `url(${restaurant.capa})` }}>
     <div className="container">
-      <Tag size="big">Italiana</Tag>
+      <Tag size="big">{restaurant.titulo}</Tag>
       <div>
-        <Title>La Doce Vita Trattoria</Title>
+        <Title>{restaurant.titulo}</Title>
       </div>
     </div>
   </Image>

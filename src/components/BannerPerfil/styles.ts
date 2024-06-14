@@ -9,7 +9,6 @@ export const Image = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
   .container {
     position: relative;
     padding-top: 210px;

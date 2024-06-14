@@ -12,33 +12,40 @@ import starGrade from '../../assets/images/star_77949.png'
 import Button from '../Button'
 
 type Props = {
-  title: string
-  grade: string
-  description: string
+  id: number
+  titulo: string
+  avaliacao: number
+  descricao: string
   image: string
-  infos: string[]
+  destacado: boolean
+  tipo: string
 }
 
-const Product = ({ title, grade, description, image, infos }: Props) => (
+const Product = ({
+  titulo,
+  avaliacao,
+  descricao,
+  image,
+  destacado,
+  tipo,
+  id
+}: Props) => (
   <Card>
-    <img src={image} alt={title} />
+    <img src={image} alt={titulo} />
     <CategoriesContainer>
-      {infos.map((info) => (
-        <Tag size="small" key={info}>
-          {info}
-        </Tag>
-      ))}
+      {destacado && <Tag size="normal">Destaque da semana</Tag>}
+      <Tag size="normal">{tipo}</Tag>
     </CategoriesContainer>
     <CardContent>
       <TitleContainer>
-        <Title>{title}</Title>
+        <Title>{titulo}</Title>
         <GradeContainer>
-          <p>{grade}</p>
+          {avaliacao}
           <img src={starGrade} alt="Star grade" />
         </GradeContainer>
       </TitleContainer>
-      <Description>{description}</Description>
-      <Button type="link" to="/perfil">
+      <Description>{descricao}</Description>
+      <Button type="link" to={`perfil/${id}`}>
         Saiba mais
       </Button>
     </CardContent>

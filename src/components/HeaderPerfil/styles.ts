@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { Link as RouterLink } from 'react-router-dom'
 import vetor from '../../assets/images/Vector.svg'
 import { Link } from 'react-router-dom'
 import { cores } from '../../styles'
@@ -14,6 +15,9 @@ export const HeaderBar = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 `
 
@@ -32,4 +36,16 @@ export const TitleHeaderPerfil = styled(Link)`
 export const CartHeaderPerfil = styled.div`
   font-size: 18px;
   font-weight: 900;
+`
+export const CartCount = styled.span`
+  margin-right: 5px;
+`
+export const StyledLink = styled(RouterLink)`
+  text-decoration: none;
+  color: ${cores.pink};
+  font-weight: 900;
+  font-size: 18px;
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `

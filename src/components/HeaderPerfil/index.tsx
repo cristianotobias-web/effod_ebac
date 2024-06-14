@@ -1,19 +1,25 @@
-import { CartHeaderPerfil, HeaderBar, Logo, TitleHeaderPerfil } from './styles'
+import {
+  CartCount,
+  CartHeaderPerfil,
+  HeaderBar,
+  Logo,
+  StyledLink
+} from './styles'
 import logo from '../../assets/images/logo.svg'
 
-const HeaderPerfil = () => {
+type HeaderProps = {
+  cartCount: number
+}
+
+const HeaderPerfil: React.FC<HeaderProps> = ({ cartCount }) => {
   return (
     <HeaderBar>
       <div className="container">
-        <div>
-          <TitleHeaderPerfil to="/">
-            <h2>Restaurantes</h2>
-          </TitleHeaderPerfil>
-        </div>
-
+        <StyledLink to="/">Restaurantes</StyledLink>
         <Logo src={logo} alt="Logo" />
-
-        <CartHeaderPerfil>0 produto(s) no carrinho</CartHeaderPerfil>
+        <CartHeaderPerfil>
+          <CartCount>{cartCount}</CartCount>produto(s) no carrinho
+        </CartHeaderPerfil>
       </div>
     </HeaderBar>
   )

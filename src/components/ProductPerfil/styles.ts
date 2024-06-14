@@ -7,6 +7,13 @@ export const Card = styled.div`
   color: ${cores.pinkLight};
   padding: 8px;
   position: relative;
+  border-radius: 5px;
+  img {
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 167px;
+  }
   ${TagContainer} {
     margin-right: 8px;
   }
@@ -23,6 +30,8 @@ export const Description = styled.p`
   line-height: 22px;
   display: block;
   margin-top: 8px;
+  padding-bottom: 10px;
+  height: 180px;
 `
 export const TitleContainer = styled.div`
   display: flex;
@@ -34,4 +43,81 @@ export const CategoriesContainer = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+`
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.73);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+`
+
+export const ModalContent = styled.div`
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  padding: 32px;
+  gap: 20px;
+  justify-content: space between;
+  background-color: ${cores.pink};
+  color: ${cores.white};
+  position: relative;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`
+export const CloseModal = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+`
+export const ModalTitle = styled.div`
+  img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+`
+export const ModalBody = styled.div`
+  h4 {
+    font-size: 18px;
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+  h4,
+  p {
+    margin-bottom: 18px;
+    @media (max-width: 768px) {
+      margin-bottom: 10px;
+    }
+  }
+  p {
+    line-height: 22px;
+    font-size: 14px;
+    @media (max-width: 768px) {
+      line-height: 18px;
+      font-size: 10px;
+    }
+  }
+  button {
+    font-size: 14px;
+    padding: 4px;
+    width: 215px;
+  }
 `

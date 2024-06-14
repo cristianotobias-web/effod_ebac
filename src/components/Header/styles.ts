@@ -26,4 +26,8 @@ export const HeaderTitle = styled.h1`
   color: ${cores.pink};
   font-weight: 900;
   width: 539px;
+  @media (max-width: 768px) {
+    font-size: 18px;
+    width: 80%;
+  }
 `

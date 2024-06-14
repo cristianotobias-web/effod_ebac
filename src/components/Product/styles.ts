@@ -8,6 +8,8 @@ export const Card = styled.div`
   border: 1px solid ${cores.pink};
   img {
     width: 100%;
+    max-height: 217px;
+    object-fit: cover;
   }
   ${TagContainer} {
     margin-right: 8px;
