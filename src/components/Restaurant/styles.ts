@@ -1,15 +1,20 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
   background-color: ${cores.white};
   position: relative;
   border: 1px solid ${cores.pink};
-  img {
+  > img {
     width: 100%;
     max-height: 217px;
     object-fit: cover;
+    @media (max-width: ${breakpoints.desktop}) {
+      max-height: 167px;
+      min-height: 167px;
+      height: 250px;
+    }
   }
   ${TagContainer} {
     margin-right: 8px;
@@ -30,6 +35,13 @@ export const Description = styled.p`
   display: block;
   margin-top: 16px;
   padding-bottom: 20px;
+  height: 120px;
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 40%;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 40%;
+  }
 `
 export const TitleContainer = styled.div`
   display: flex;

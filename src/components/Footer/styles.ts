@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import vetor from '../../assets/images/Vector.svg'
 
 export const ContainerFooter = styled.footer`
@@ -20,9 +20,10 @@ export const ContainerFooter = styled.footer`
       font-size: 10px;
       text-align: center;
       color: ${cores.pink};
+      font-size: 10px;
     }
     div {
-      width: 800px;
+      width: 768px;
       @media (max-width: 768px) {
         width: 400px;
       }
@@ -33,6 +34,9 @@ export const Logo = styled.img`
   width: 125px;
   height: auto;
   margin-bottom: 32px;
+  @media (max-width: ${breakpoints.desktop}) {
+    margin-bottom: 0px;
+  }
 `
 export const SectionFooter = styled.div`
   display: flex;
@@ -43,6 +47,10 @@ export const SectionFooter = styled.div`
 
 export const Links = styled.ul`
   display: flex;
+  margin-bottom: 80px;
+  @media (max-width: ${breakpoints.desktop}) {
+    margin-bottom: 60px;
+  }
 `
 
 export const Link = styled.a`

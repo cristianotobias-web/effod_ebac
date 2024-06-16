@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles'
 
-export const ProductsListContainer = styled.section`
+export const RestaurantListContainer = styled.section`
   padding: 54px 0;
 `
 
@@ -11,6 +12,12 @@ export const List = styled.ul`
   row-gap: 32px;
   margin-bottom: 66px;
   @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
   }
 `
