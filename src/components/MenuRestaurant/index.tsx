@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Button from '../Button'
 import {
   Card,
@@ -11,39 +12,52 @@ import {
   Title,
   TitleContainer
 } from './styles'
-import close from '../../assets/images/close_1.png'
+import close from '../../assets/images/close.png'
+import { add as addToCart, open } from '../../store/reducers/cart'
 
 type Props = {
-  titulo: string
+  id: number
+  nome: string
   descricao: string
-  image: string
+  foto: string
   porcao: string
   preco: number
-  addToCart: () => void
 }
-const ProductPerfil: React.FC<Props> = ({
-  titulo,
+
+export const priceFormated = (price: number) =>
+  price.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
+
+const MenuRestaurant: React.FC<Props> = ({
+  id,
+  nome,
   descricao,
   porcao,
-  image,
-  preco,
-  addToCart
+  foto,
+  preco
 }) => {
   const [modal, setModal] = useState(false)
   const closeModal = () => {
     setModal(false)
   }
-  // Formatar o preço como string de moeda
-  const precoFormatado = preco.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  })
+
+  const dispatch = useDispatch()
+
+  // Adicionando item ao carrinho
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id, nome, descricao, porcao, foto, preco }))
+    dispatch(open())
+    setModal(false)
+  }
+
   return (
     <>
       <Card>
-        <img src={image} alt={titulo} />
+        <img src={foto} alt={nome} />
         <TitleContainer>
-          <Title>{titulo}</Title>
+          <Title>{nome}</Title>
         </TitleContainer>
         <Description>{descricao}</Description>
         <Button
@@ -58,18 +72,18 @@ const ProductPerfil: React.FC<Props> = ({
       <Modal className={modal ? 'visible' : ''}>
         <ModalContent className="container">
           <ModalTitle>
-            <img src={image} alt={titulo} />
+            <img src={foto} alt={nome} />
           </ModalTitle>
           <ModalBody>
-            <h4>{titulo}</h4>
+            <h4>{nome}</h4>
             <p>{descricao}</p>
             <p>{porcao}</p>
-            <Button type="button" onClick={addToCart}>
-              Adicionar ao carrinho - {precoFormatado}
+            <Button type="button" onClick={handleAddToCart}>
+              Adicionar ao carrinho - {priceFormated(preco)}
             </Button>
           </ModalBody>
           <CloseModal>
-            <img src={close} alt="Icon close" onClick={() => closeModal()} />
+            <img src={close} alt="Icon close" onClick={closeModal} />
           </CloseModal>
         </ModalContent>
       </Modal>
@@ -77,4 +91,4 @@ const ProductPerfil: React.FC<Props> = ({
   )
 }
 
-export default ProductPerfil
+export default MenuRestaurant

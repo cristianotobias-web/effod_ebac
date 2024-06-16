@@ -3,22 +3,28 @@ import {
   CartHeaderPerfil,
   HeaderBar,
   Logo,
-  StyledLink
+  StyledLink,
+  CartButton
 } from './styles'
 import logo from '../../assets/images/logo.svg'
+import { open } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
-type HeaderProps = {
-  cartCount: number
-}
-
-const HeaderPerfil: React.FC<HeaderProps> = ({ cartCount }) => {
+const HeaderPerfil: React.FC = () => {
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const openCart = () => {
+    dispatch(open())
+  }
   return (
     <HeaderBar>
       <div className="container">
         <StyledLink to="/">Restaurantes</StyledLink>
         <Logo src={logo} alt="Logo" />
         <CartHeaderPerfil>
-          <CartCount>{cartCount}</CartCount>produto(s) no carrinho
+          <CartCount>{items.length}</CartCount>
+          <CartButton onClick={openCart}>produto(s) no carrinho</CartButton>
         </CartHeaderPerfil>
       </div>
     </HeaderBar>

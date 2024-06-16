@@ -10,7 +10,7 @@ export const HeaderBar = styled.header`
   background-position: center;
   padding-top: 40px;
   padding-bottom: 65px;
-
+  z-index: 1;
   div {
     display: flex;
     justify-content: space-between;
@@ -48,4 +48,7 @@ export const StyledLink = styled(RouterLink)`
   @media (max-width: 768px) {
     margin-bottom: 20px;
   }
+`
+export const CartButton = styled.a`
+  cursor: pointer;
 `

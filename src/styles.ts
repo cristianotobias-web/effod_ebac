@@ -4,7 +4,13 @@ export const cores = {
   white: '#ffffff',
   pink: '#E66767',
   transparent: 'transparent',
-  pinkLight: '#FFEBD9'
+  pinkLight: '#FFEBD9',
+  black: '#000000'
+}
+
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
 }
 
 const GlobalCss = createGlobalStyle`
@@ -23,6 +29,10 @@ const GlobalCss = createGlobalStyle`
     .container {
         max-width: 1024px;
         margin: 0 auto;
+
+     @media (max-width: ${breakpoints.desktop}){
+      max-width: 80%;
+     }   
     }
  }
 

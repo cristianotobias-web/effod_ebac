@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
@@ -74,7 +74,7 @@ export const ModalContent = styled.div`
   background-color: ${cores.pink};
   color: ${cores.white};
   position: relative;
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
   }
 `

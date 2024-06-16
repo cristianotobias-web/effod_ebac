@@ -1,7 +1,6 @@
-import $ from 'jquery'
-import ProductList from '../../components/ProductsList'
+import { useGetRestaurantsQuery } from '../../services/api'
+import RestaurantsList from '../../components/RestaurantsList'
 import Header from '../../components/Header'
-import { useEffect, useState } from 'react'
 
 export type Food = {
   id: number
@@ -23,28 +22,12 @@ export type Food = {
   ]
 }
 const Home = () => {
-  const [restaurants, setRestaurants] = useState([])
-
-  useEffect(() => {
-    const endpoint = 'https://fake-api-tau.vercel.app/api/efood/restaurantes'
-
-    $.ajax({
-      url: endpoint,
-      method: 'GET',
-      success: (res) => {
-        setRestaurants(res)
-      },
-      error: (err) => {
-        console.error('Erro ao buscar os dados:', err)
-      }
-    })
-  }, [])
-
+  const { data: restaurants } = useGetRestaurantsQuery()
   return (
     <>
       <Header />
       {restaurants ? (
-        <ProductList foods={restaurants} />
+        <RestaurantsList restaurants={restaurants} />
       ) : (
         <h3>Serviço nao disponivel</h3>
       )}
