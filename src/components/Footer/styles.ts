@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import vetor from '../../assets/images/Vector.svg'
 
 export const ContainerFooter = styled.footer`
   background-image: url(${vetor});
   background-size: cover;
   background-position: center;
-  background-color: ${cores.pink};
+  background-color: ${colors.pink};
   .container {
     padding: 40px 0;
     height: 298px;
@@ -19,7 +19,7 @@ export const ContainerFooter = styled.footer`
       margin: 0 auto;
       font-size: 10px;
       text-align: center;
-      color: ${cores.pink};
+      color: ${colors.pink};
       font-size: 10px;
     }
     div {
@@ -53,8 +53,8 @@ export const Links = styled.ul`
   }
 `
 
-export const Link = styled.a`
-  color: ${cores.pink};
+export const LinkFooter = styled.a`
+  color: ${colors.pink};
   text-decoration: none;
   margin-right: 3px;
 `

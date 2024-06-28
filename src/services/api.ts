@@ -1,51 +1,25 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Food } from '../pages/Home'
 
+// Define o seu api com o endpoint existente
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
+    baseUrl: 'https://fake-api-tau.vercel.app/api/efood' // URL base da API
   }),
   endpoints: (builder) => ({
     getRestaurants: builder.query<Food[], void>({
-      query: () => 'restaurantes'
+      query: () => 'restaurantes' // Endpoint para obter a lista de restaurantes
     }),
-    getOnSale: builder.query<Food[], void>({
-      query: () => 'promocoes'
-    }),
-    getSoon: builder.query<Food[], void>({
-      query: () => 'em-breve'
-    }),
-    getActionGames: builder.query<Food[], void>({
-      query: () => 'acao'
-    }),
-    getSportGames: builder.query<Food[], void>({
-      query: () => 'esportes'
-    }),
-    getSimulationGames: builder.query<Food[], void>({
-      query: () => 'simulacao'
-    }),
-    getFightGames: builder.query<Food[], void>({
-      query: () => 'luta'
-    }),
-    getRpgGames: builder.query<Food[], void>({
-      query: () => 'rpg'
-    }),
-    getGame: builder.query<Food, string>({
-      query: (id) => `jogos/${id}`
+    purchase: builder.mutation<purchaseResponse, CheckoutPayload>({
+      query: (body) => ({
+        url: 'checkout', // Endpoint para realizar o checkout (POST)
+        method: 'POST',
+        body
+      })
     })
   })
 })
 
-export const {
-  useGetRestaurantsQuery,
-  useGetOnSaleQuery,
-  useGetSoonQuery,
-  useGetActionGamesQuery,
-  useGetSportGamesQuery,
-  useGetSimulationGamesQuery,
-  useGetFightGamesQuery,
-  useGetRpgGamesQuery,
-  useGetGameQuery
-} = api
+// Exporta os hooks gerados automaticamente para os endpoints
+export const { useGetRestaurantsQuery, usePurchaseMutation } = api
 
 export default api

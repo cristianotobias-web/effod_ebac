@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TagContainer } from '../Tag/styles'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Image = styled.div`
   width: 100%;
@@ -42,7 +42,7 @@ export const Image = styled.div`
 export const Title = styled.h2`
   font-size: 32px;
   font-weight: 900;
-  color: ${cores.white};
+  color: ${colors.white};
   position: relative;
   z-index: 2;
 `

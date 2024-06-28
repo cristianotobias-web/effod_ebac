@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 import { Link as RouterLink } from 'react-router-dom'
 import vetor from '../../assets/images/Vector.svg'
 import { Link } from 'react-router-dom'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const HeaderBar = styled.header`
   background-image: url(${vetor});
@@ -30,7 +30,7 @@ export const TitleHeaderPerfil = styled(Link)`
   h2 {
     font-size: 18px;
     font-weight: 900;
-    color: ${cores.pink};
+    color: ${colors.pink};
   }
 `
 export const CartHeaderPerfil = styled.div`
@@ -42,7 +42,7 @@ export const CartCount = styled.span`
 `
 export const StyledLink = styled(RouterLink)`
   text-decoration: none;
-  color: ${cores.pink};
+  color: ${colors.pink};
   font-weight: 900;
   font-size: 18px;
   @media (max-width: 768px) {

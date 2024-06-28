@@ -1,33 +1,42 @@
-import {
-  CartCount,
-  CartHeaderPerfil,
-  HeaderBar,
-  Logo,
-  StyledLink,
-  CartButton
-} from './styles'
-import logo from '../../assets/images/logo.svg'
-import { open } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
+import { useDispatch, useSelector } from 'react-redux' // Importação dos hooks do Redux para dispatch e seleção de estado
 
+import { RootReducer } from '../../store' // Importação do tipo de estado raiz do Redux
+import logo from '../../assets/images/logo.svg' // Importação do logo da aplicação
+import { open } from '../../store/reducers/cart' // Ação para abrir o carrinho
+
+import * as S from './styles' // Importação dos estilos estilizados
+
+/**
+ * Componente de cabeçalho para o perfil do usuário.
+ * Exibe opções de navegação e informações do carrinho.
+ */
 const HeaderPerfil: React.FC = () => {
-  const dispatch = useDispatch()
-  const { items } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch() // Hook para despachar ações Redux
+  const { items } = useSelector((state: RootReducer) => state.cart) // Estado dos itens no carrinho obtido do estado Redux
+
+  /**
+   * Função para abrir o carrinho.
+   */
   const openCart = () => {
-    dispatch(open())
+    dispatch(open()) // Dispara a ação para abrir o carrinho
   }
+
   return (
-    <HeaderBar>
+    <S.HeaderBar>
       <div className="container">
-        <StyledLink to="/">Restaurantes</StyledLink>
-        <Logo src={logo} alt="Logo" />
-        <CartHeaderPerfil>
-          <CartCount>{items.length}</CartCount>
-          <CartButton onClick={openCart}>produto(s) no carrinho</CartButton>
-        </CartHeaderPerfil>
+        <S.StyledLink to="/">Restaurantes</S.StyledLink>{' '}
+        {/* Link para a página inicial */}
+        <S.Logo src={logo} alt="Logo" /> {/* Logo da aplicação */}
+        <S.CartHeaderPerfil>
+          <S.CartCount>{items.length}</S.CartCount>{' '}
+          {/* Contador de itens no carrinho */}
+          <S.CartButton onClick={openCart}>
+            produto(s) no carrinho
+          </S.CartButton>{' '}
+          {/* Botão para abrir o carrinho */}
+        </S.CartHeaderPerfil>
       </div>
-    </HeaderBar>
+    </S.HeaderBar>
   )
 }
 
