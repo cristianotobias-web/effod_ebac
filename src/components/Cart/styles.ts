@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 import close from '../../assets/images/lixeira-de-reciclagem.png'
 
@@ -9,7 +9,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${cores.black};
+  background-color: ${colors.black};
   opacity: 0.7;
 `
 export const CartContainer = styled.div`
@@ -26,13 +26,13 @@ export const CartContainer = styled.div`
   }
 `
 export const SidebarContainer = styled.div`
-  background-color: ${cores.pink};
+  background-color: ${colors.pink};
   z-index: 1;
   max-width: 360px;
   width: 100%;
 `
 export const Sidebar = styled.aside`
-  background-color: ${cores.pink};
+  background-color: ${colors.pink};
   z-index: 1;
   padding: 40px 16px 0;
   max-width: 360px;
@@ -44,18 +44,23 @@ export const Sidebar = styled.aside`
     width: 100%;
     margin-bottom: 20px;
   }
+  p {
+    font-size: 14px;
+    text-align: center;
+    color: ${colors.pinkLight};
+  }
 `
 export const Price = styled.p`
   font-weight: bold;
   font-size: 16px;
   display: flex;
   justify-content: space-between;
-  color: ${cores.pinkLight};
+  color: ${colors.pinkLight};
   margin: 50px 0 18px;
 `
 export const CartItem = styled.li`
   display: flex;
-  background-color: ${cores.pinkLight};
+  background-color: ${colors.pinkLight};
   padding: 8px;
   position: relative;
   margin-bottom: 10px;
@@ -66,7 +71,7 @@ export const CartItem = styled.li`
     margin-right: 24px;
   }
   h3 {
-    color: ${cores.pink};
+    color: ${colors.pink};
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 16px;
@@ -74,7 +79,7 @@ export const CartItem = styled.li`
   span {
     display: block;
     font-size: 14px;
-    color: ${cores.pink};
+    color: ${colors.pink};
   }
   button {
     background-image: url(${close});

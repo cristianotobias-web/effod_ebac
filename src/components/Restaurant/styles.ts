@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.white};
+  background-color: ${colors.white};
   position: relative;
-  border: 1px solid ${cores.pink};
+  border: 1px solid ${colors.pink};
   > img {
     width: 100%;
     max-height: 217px;

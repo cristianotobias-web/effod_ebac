@@ -1,17 +1,17 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { Props } from '.'
 
 export const TagContainer = styled.div<Props>`
-  color: ${cores.pinkLight};
+  color: ${colors.pinkLight};
   margin-left: 5px;
   background-color: ${(props) => {
     if (props.size === 'big') {
-      return cores.transparent
+      return colors.transparent
     } else if (props.size === 'small') {
-      return cores.pink
+      return colors.pink
     } else if (props.size === 'normal') {
-      return cores.pink
+      return colors.pink
     }
   }};
   font-size: ${(props) => {

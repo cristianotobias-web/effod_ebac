@@ -1,15 +1,18 @@
-import { Food } from '../../pages/Home'
-import Restaurant from '../Restaurant'
-import { List, RestaurantsListContainer } from './styles'
+import Restaurant from '../Restaurant' // Importa o componente de restaurante
+
+import * as S from './styles' // Estilos estilizados do componente
 
 export type Props = {
-  restaurants: Food[]
+  restaurants: Food[] // Interface para os dados dos restaurantes
 }
 
+/**
+ * Componente para exibir uma lista de restaurantes.
+ */
 const RestaurantsList = ({ restaurants }: Props) => (
-  <RestaurantsListContainer>
+  <S.RestaurantsListContainer>
     <div className="container">
-      <List>
+      <S.List>
         {restaurants.map((restaurant) => (
           <Restaurant
             key={restaurant.id}
@@ -22,9 +25,9 @@ const RestaurantsList = ({ restaurants }: Props) => (
             tipo={restaurant.tipo}
           />
         ))}
-      </List>
+      </S.List>
     </div>
-  </RestaurantsListContainer>
+  </S.RestaurantsListContainer>
 )
 
 export default RestaurantsList

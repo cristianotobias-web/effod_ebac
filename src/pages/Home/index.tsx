@@ -1,35 +1,26 @@
-import { useGetRestaurantsQuery } from '../../services/api'
-import RestaurantsList from '../../components/RestaurantsList'
-import Header from '../../components/Header'
+import { useGetRestaurantsQuery } from '../../services/api' // Importa a query para obter os restaurantes da API
+import RestaurantsList from '../../components/RestaurantsList' // Importa o componente de lista de restaurantes
+import Header from '../../components/Header' // Importa o componente de cabeçalho
+import Loader from '../../Loaders' // Importa o componente de loader
 
-export type Food = {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: [
-    {
-      foto: string
-      preco: number
-      id: number
-      nome: string
-      descricao: string
-      porcao: string
-    }
-  ]
-}
+/**
+ * Página inicial da aplicação.
+ * Exibe um cabeçalho, a lista de restaurantes carregada da API, ou um loader enquanto os dados estão sendo buscados.
+ */
 const Home = () => {
-  const { data: restaurants } = useGetRestaurantsQuery()
+  const { data: restaurants } = useGetRestaurantsQuery() // Busca os dados dos restaurantes da API
+
   return (
     <>
-      <Header />
-      {restaurants ? (
-        <RestaurantsList restaurants={restaurants} />
+      <Header /> {/* Renderiza o cabeçalho */}
+      {restaurants ? ( // Condicional: se houver dados dos restaurantes
+        <RestaurantsList restaurants={restaurants} /> // Renderiza a lista de restaurantes com os dados obtidos
       ) : (
-        <h3>Serviço nao disponivel</h3>
+        // Senão
+        <div className="container">
+          <Loader />
+          {/* Renderiza o loader enquanto os dados estão sendo carregados */}
+        </div>
       )}
     </>
   )

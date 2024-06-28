@@ -1,21 +1,20 @@
-import { Food } from '../../pages/Home'
-
-import { Image, Title } from './styles'
 import Tag from '../Tag'
+
+import * as S from './styles'
 
 interface BannerPerfilProps {
   restaurant: Food
 }
 
 const BannerPerfil: React.FC<BannerPerfilProps> = ({ restaurant }) => (
-  <Image style={{ backgroundImage: `url(${restaurant.capa})` }}>
+  <S.Image style={{ backgroundImage: `url(${restaurant.capa})` }}>
     <div className="container">
       <Tag size="big">{restaurant.titulo}</Tag>
       <div>
-        <Title>{restaurant.titulo}</Title>
+        <S.Title>{restaurant.titulo}</S.Title>
       </div>
     </div>
-  </Image>
+  </S.Image>
 )
 
 export default BannerPerfil

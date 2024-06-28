@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import vetor from '../../assets/images/Vector.svg'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const HeaderBar = styled.header`
   background-image: url(${vetor});
@@ -23,7 +23,7 @@ export const Logo = styled.img`
 
 export const HeaderTitle = styled.h1`
   font-size: 36px;
-  color: ${cores.pink};
+  color: ${colors.pink};
   font-weight: 900;
   width: 539px;
   @media (max-width: 768px) {
