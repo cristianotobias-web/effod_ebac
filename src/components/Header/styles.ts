@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import vetor from '../../assets/images/Vector.svg'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const HeaderBar = styled.header`
   background-image: url(${vetor});
@@ -14,6 +14,9 @@ export const HeaderBar = styled.header`
   text-align: center;
   padding-top: 40px;
   padding-bottom: 40px;
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 export const Logo = styled.img`
@@ -26,7 +29,7 @@ export const HeaderTitle = styled.h1`
   color: ${colors.pink};
   font-weight: 900;
   width: 539px;
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     font-size: 18px;
     width: 80%;
   }

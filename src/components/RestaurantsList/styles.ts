@@ -4,6 +4,9 @@ import { breakpoints } from '../../styles'
 export const RestaurantsListContainer = styled.section`
   padding-top: 80px;
   margin-bottom: 120px;
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 100%;
+  }
 `
 
 export const List = styled.ul`

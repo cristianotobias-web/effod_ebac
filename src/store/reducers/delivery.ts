@@ -10,7 +10,8 @@ const initialState: DeliveryState = {
     number: '',
     complement: ''
   },
-  isVisible: false
+  isVisible: false,
+  cep: ''
 }
 
 export const deliverySlice = createSlice({
@@ -33,6 +34,9 @@ export const deliverySlice = createSlice({
       // Define os dados completos de entrega
       Object.assign(state, action.payload)
     },
+    setCep: (state, action: PayloadAction<string>) => {
+      state.cep = action.payload
+    },
     clearDeliveryData: (state) => {
       // Limpa todos os dados de entrega
       state.receiver = ''
@@ -53,7 +57,8 @@ export const {
   setAddress,
   setVisibility,
   setDeliveryData,
-  clearDeliveryData
+  clearDeliveryData,
+  setCep
 } = deliverySlice.actions
 
 // Função assíncrona para buscar dados do CEP

@@ -10,6 +10,7 @@ import {
   fetchCEPData
 } from '../../store/reducers/delivery'
 import { setPaymentVisibility } from '../../store/reducers/payment'
+import { setCep } from '../../store/reducers/delivery'
 import { open } from '../../store/reducers/cart'
 
 import * as S from './styles'
@@ -38,7 +39,7 @@ const capitalizeNames = (value: string): string => {
   return capitalizedNames.join(' ')
 }
 
-// Função utilitária para remover zeros à direita de um número
+// Função utilitária para remover zeros à esquerda de um número
 function trimTrailingZeros(number: string) {
   return number.replace(/^0+/, '')
 }
@@ -52,10 +53,11 @@ const Delivery: React.FC = () => {
     (state: RootReducer) => state.delivery
   )
 
-  const [cep, setCep] = useState('')
   const [errors, setErrors] = useState<{
     [key: string]: string | { [key: string]: string | undefined }
   }>({})
+
+  const { cep } = useSelector((state: RootReducer) => state.delivery)
 
   // Função para lidar com a mudança de inputs do formulário de destinatário
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -189,27 +191,27 @@ const Delivery: React.FC = () => {
     }
 
     // Validar campo 'address'
-    if (!address) {
-      validationErrors.address = 'Endereço completo é obrigatório'
-    } else {
-      const addressErrors: { [key: string]: string | undefined } = {}
-      if (!address.description) {
-        addressErrors.description = 'Endereço é obrigatório'
-      }
-      if (!address.city) {
-        addressErrors.city = 'Cidade é obrigatória'
-      }
-      if (!validateCEP(address.zipCode || '')) {
-        addressErrors.zipCode = 'CEP deve conter 8 dígitos'
-      } else if (
-        typeof errors.address === 'object' &&
-        errors.address?.zipCode === 'CEP inválido ou não encontrado'
-      ) {
-        addressErrors.zipCode = 'CEP inválido ou não encontrado'
-      }
-      if (!address.number) {
-        addressErrors.number = 'Número é obrigatório'
-      }
+    const addressErrors: { [key: string]: string | undefined } = {}
+    if (!address?.description) {
+      addressErrors.description = 'Endereço é obrigatório'
+    }
+    if (!address?.city) {
+      addressErrors.city = 'Cidade é obrigatória'
+    }
+    if (!validateCEP(address?.zipCode || '')) {
+      addressErrors.zipCode = 'CEP deve conter 8 dígitos'
+    } else if (
+      typeof errors.address === 'object' &&
+      errors.address?.zipCode === 'CEP inválido ou não encontrado'
+    ) {
+      addressErrors.zipCode = 'CEP inválido ou não encontrado'
+    }
+    if (!address?.number || address.number === '0') {
+      addressErrors.number = 'Número é obrigatório e não pode ser 0'
+    }
+
+    if (Object.keys(addressErrors).length > 0) {
+      validationErrors.address = addressErrors
     }
 
     return validationErrors
@@ -224,7 +226,7 @@ const Delivery: React.FC = () => {
 
     // Verifica se o valor realmente mudou antes de atualizar o estado
     if (cleanedCep !== cep) {
-      setCep(cleanedCep) // Atualiza o estado local do CEP
+      dispatch(setCep(cleanedCep)) // Atualiza o estado local do CEP
 
       // Limpar os erros antes de validar
       setErrors((prevErrors) => {
@@ -411,7 +413,7 @@ const Delivery: React.FC = () => {
                 onChange={handleAddressChange}
                 onBlur={(e) => {
                   const { name, value } = e.target
-                  const trimmedValue = trimTrailingZeros(value) // Remove os zeros à direita
+                  const trimmedValue = trimTrailingZeros(value) // Remove os zeros à esquerda
 
                   dispatch(
                     setDeliveryData({

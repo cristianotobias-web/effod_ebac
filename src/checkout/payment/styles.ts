@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { breakpoints, colors } from '../../styles'
 
 type InputGroupProps = {
-  maxWidth?: string
+  $maxwidth?: string
   marginTop?: string
 }
 
@@ -17,7 +17,7 @@ export const Row = styled.div<InputGroupProps>`
 `
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
-  max-width: ${(props) => props.maxWidth || 'auto'};
+  max-width: ${(props) => props.$maxwidth || 'auto'};
   label {
     font-size: 14px;
     margin-bottom: 8px;

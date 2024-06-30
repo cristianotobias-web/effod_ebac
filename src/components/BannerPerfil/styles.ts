@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TagContainer } from '../Tag/styles'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Image = styled.div`
   width: 100%;
@@ -15,11 +15,18 @@ export const Image = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    @media (max-width: ${breakpoints.tablet}) {
+      padding-left: 20px;
+    }
   }
   ${TagContainer} {
     position: absolute;
     top: 10px;
     left: -20px;
+    @media (max-width: ${breakpoints.tablet}) {
+      left: 5px;
+      font-size: 1.8rem;
+    }
   }
   /* Camada preta */
   &::before {
@@ -45,4 +52,7 @@ export const Title = styled.h2`
   color: ${colors.white};
   position: relative;
   z-index: 2;
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 1.8rem;
+  }
 `

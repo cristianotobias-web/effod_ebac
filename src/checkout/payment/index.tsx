@@ -4,7 +4,11 @@ import InputMask from 'react-input-mask'
 
 import { usePurchaseMutation } from '../../services/api' // Importar a mutação de compra
 import { useDispatch, useSelector } from 'react-redux'
-import { setVisibility, clearDeliveryData } from '../../store/reducers/delivery'
+import {
+  setVisibility,
+  clearDeliveryData,
+  setCep
+} from '../../store/reducers/delivery'
 import { setPaymentVisibility } from '../../store/reducers/payment' // Ajustar a visibilidade do pagamento
 import { RootReducer } from '../../store'
 import { setOrderId, setOrderVisibility } from '../../store/reducers/order'
@@ -152,6 +156,7 @@ const Payment = () => {
         await purchase(payload)
 
         // Limpa os dados de entrega e reseta o formulário
+        dispatch(setCep(''))
         dispatch(clearDeliveryData())
         resetForm()
 
@@ -217,7 +222,7 @@ const Payment = () => {
               className={checkInputHasError('cardNumber') ? 'error' : ''}
             />
           </S.InputGroup>
-          <S.InputGroup maxWidth="56px">
+          <S.InputGroup $maxwidth="56px">
             <label htmlFor="cvv">CVV</label>
             <InputMask
               id="cvv"

@@ -42,6 +42,7 @@ declare interface DeliveryState {
   receiver: string
   address: Address
   isVisible: boolean
+  cep: string
 }
 
 // Interface para o estado de pagamento

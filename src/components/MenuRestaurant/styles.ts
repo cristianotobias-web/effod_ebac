@@ -62,6 +62,9 @@ export const Modal = styled.div`
     opacity: 1;
     visibility: visible;
   }
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 export const ModalContent = styled.div`
@@ -76,6 +79,7 @@ export const ModalContent = styled.div`
   position: relative;
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
+    width: 100%;
   }
 `
 export const CloseModal = styled.div`
