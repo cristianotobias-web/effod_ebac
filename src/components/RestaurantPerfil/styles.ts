@@ -3,6 +3,9 @@ import { breakpoints } from '../../styles'
 
 export const RestaurantListContainer = styled.section`
   padding: 54px 0;
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 100%;
+  }
 `
 
 export const List = styled.ul`
@@ -19,6 +22,7 @@ export const List = styled.ul`
   }
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 `
 export const Title = styled.h2`

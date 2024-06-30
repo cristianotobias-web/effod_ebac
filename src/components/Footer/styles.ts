@@ -21,11 +21,14 @@ export const ContainerFooter = styled.footer`
       text-align: center;
       color: ${colors.pink};
       font-size: 10px;
+      @media (max-width: ${breakpoints.tablet}) {
+        max-width: 70%;
+      }
     }
     div {
       width: 768px;
-      @media (max-width: 768px) {
-        width: 400px;
+      @media (max-width: ${breakpoints.tablet}) {
+        width: 100%;
       }
     }
   }

@@ -22,6 +22,9 @@ export const DeliveryContainer = styled.div`
   &.visible {
     display: flex;
   }
+  @media (max-width: ${breakpoints.tablet}) {
+    max-height: 100vh;
+  }
 `
 export const FormContainer = styled.form`
   background-color: ${colors.pink};
